@@ -9,9 +9,25 @@
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 	
+	
+	<!-- 
+	
+		- 코드의 길이가 길어질 경우 mybatis-config 파일에 <typeAlias>태그로 alias(별명,별칭)을 지정하여 간편하게 사용할 수 있다.
+	
+	    예시)
+		<typeAliases>
+			<typeAlias type="com.spring.dto.MemberDTO"  alias="MemberDTO" />
+			<typeAlias type="com.spring.dto.ProductDTO" alias="ProductDTO"/>
+			<typeAlias type="com.spring.dto.MessageDTO" alias="MessageDTO"/>
+		</typeAliases>
+		
+	 -->
+	 
 	<typeAliases>
 		<typeAlias type="com.spring.mvc2.data_transfer.domain.MemberDTO" alias="MemberDTO"/>
+	    <typeAlias alias="OrderDTO" type="com.spring.mvc2.data_transfer.domain.OrderDTO"/> 
 	</typeAliases>
+
 	
 </configuration>
 

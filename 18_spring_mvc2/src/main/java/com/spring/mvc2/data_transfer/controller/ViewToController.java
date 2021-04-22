@@ -1,5 +1,6 @@
 package com.spring.mvc2.data_transfer.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -67,7 +68,7 @@ public class ViewToController {
 		 *
 		 * 	특정 페이지로 리다이렉트시키는 방법은 "redirect:경로" 와 같은 형태로 간단하다.
 		 *	jsp 페이지로 이동하는 방법과 url로 리다이렉트하는 방법의 차이점은 중요하므로 잘 기억하여야 한다.
-	????	 *	 
+		 *	 
 		 *		jsp로 이동하는 경우 : 순수하게 페이지만 이동  
 		 *		redirect하는 경우   : 해당 url에 있는 모든 로직을 수행한후 페이지 이동.
 		 *
@@ -127,6 +128,24 @@ public class ViewToController {
 	
 	 */
 	
+	@RequestMapping(value="/transfer4")
+	public String trnasfer4(@RequestParam(name="birthY" , defaultValue="2021") String birthY,
+			                @RequestParam(name="birthM" , defaultValue="1") String birthM,
+			                @RequestParam(name="birthD" , defaultValue="1") String birthD,
+			                @RequestParam(name="birthGn" , defaultValue="2") String birthGn ) {
+		
+		Map<String, String> memberMap = new HashMap<String, String>();
+		memberMap.put("birthY", birthY);
+		memberMap.put("birthM", birthM);
+		memberMap.put("birthD", birthD);
+		memberMap.put("birthGn", birthGn);
+		
+		memberDAO.joinMember(memberMap);
+		
+		return "redirect:/cTov/list1";
+	}
+	
+	
 	
 	/* 
 	 * 예시 5) [ 특정 값만 입력받기 ] parameter에 직접 name값만 입력
@@ -135,6 +154,14 @@ public class ViewToController {
 	 * 가독성 향상 및 코드의 통일성을 위해 @RequestParam 어노테이션 사용을 권장한다.
 	 * 
 	 */
+	
+	@RequestMapping(value="/transfer5")
+	public String transfer5(String id, String pw, String name) {
+		memberDAO.joinMember(id, pw, name);
+		return "redirect:/cTov/list1";
+	}
+	
+	
 	
 }
 

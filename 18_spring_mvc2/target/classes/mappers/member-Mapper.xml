@@ -9,7 +9,7 @@
 		FROM
 				T_MEMBER;
 	</select>
-                                     <!-- ???? -->
+                                   
 	<insert id="insertMemberDTO" parameterType="MemberDTO">
 		INSERT INTO T_MEMBER
 		VALUES(

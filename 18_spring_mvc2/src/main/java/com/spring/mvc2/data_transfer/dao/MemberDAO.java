@@ -1,5 +1,6 @@
 package com.spring.mvc2.data_transfer.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +24,14 @@ public class MemberDAO {
 	
 	public void joinMember(MemberDTO memberDTO) {
 		sqlSession.insert("member.insertMemberDTO" , memberDTO);
+	}
+	
+	public void joinMember(String id , String pw, String name) {
+		Map<String, String> memberMap = new HashMap<String, String>();
+		memberMap.put("id", id);
+		memberMap.put("pw", pw);
+		memberMap.put("name", name);
+		sqlSession.insert("member.insertMemberMap" , memberMap);
 	}
 	
 	public void joinMember(Map<String, String> memberMap) {
