@@ -45,6 +45,12 @@ public class MapperToDao {
 		return "order/select3";
 	}
 	
+	@RequestMapping(value="/selectData4")
+	public String selectData4(Model model) {
+		model.addAttribute("from" , "selectData4");
+		model.addAttribute("orderList" , orderDAO.selectData4());
+		return "order/select3";
+	}
 	
 	
 	
